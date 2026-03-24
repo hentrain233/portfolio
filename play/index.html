@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>肉鸽卡牌 · 牌库原型</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app-root">
+      <div class="layout-wrap">
+        <div class="layout-main">
+      <header class="header">
+        <h1>牌库系统</h1>
+        <p class="subtitle">手牌 · 费用与回合 · 战斗区</p>
+      </header>
+
+      <section class="toolbar">
+        <button type="button" id="btn-new-battle" class="btn primary">开始新游戏</button>
+        <div class="hud hud--compact" id="hud" aria-live="polite">
+          <span class="hud-item">🪙 <strong id="coins-display">99</strong></span>
+          <span id="energy-display" hidden>3</span>
+          <span id="energy-max-display" hidden>3</span>
+        </div>
+      </section>
+
+      <section class="relic-bar" aria-label="遗物槽位">
+        <div class="relic-bar-title">遗物</div>
+        <div class="relic-slots" id="relic-slots"></div>
+      </section>
+
+      <section class="arena" id="arena-section" aria-label="战斗区域">
+        <div class="battle-start-toast" id="battle-start-toast" aria-hidden="true">开始战斗</div>
+        <div class="turn-badge">回合 <strong id="turn-display">1</strong></div>
+        <div class="arena-board">
+          <div class="combatant combatant--player">
+            <div class="combatant-label">玩家</div>
+            <div class="combatant-intent-spacer" aria-hidden="true"></div>
+            <div class="buff-row" id="player-buffs" aria-label="玩家增益"></div>
+            <div class="hp-strip" id="player-hp-strip">
+              <div class="hp-bar-outer" id="player-hp-bar-shell" aria-hidden="true">
+                <div class="hp-bar-inner hp-bar-inner--player" id="player-hp-bar"></div>
+              </div>
+              <div class="hp-numbers hp-numbers--tight">
+                <span id="player-hp">80</span>/<span id="player-max-hp">80</span><span class="hp-block-suffix" id="player-block-suffix" hidden></span>
+              </div>
+            </div>
+            <div class="cube-aura" id="player-cube-aura">
+              <div class="cube cube--player" id="player-cube"></div>
+            </div>
+          </div>
+
+          <div class="arena-center">
+            <button type="button" id="btn-view-exhaust" class="btn pile-fab" aria-haspopup="dialog">
+              消耗堆 <span class="pile-fab-count" id="exhaust-count">0</span>
+            </button>
+            <button type="button" id="btn-view-draw" class="btn pile-fab" aria-haspopup="dialog">
+              抽牌堆 <span class="pile-fab-count" id="draw-count">0</span>
+            </button>
+            <button type="button" id="btn-view-discard" class="btn pile-fab" aria-haspopup="dialog">
+              弃牌堆 <span class="pile-fab-count" id="discard-count">0</span>
+            </button>
+          </div>
+
+          <div class="combatant combatant--enemy">
+            <div class="combatant-label" id="enemy-name-label">敌人</div>
+            <div class="enemy-intent" id="enemy-intent" aria-live="polite"></div>
+            <div class="buff-row" id="enemy-buffs" aria-label="敌人增益"></div>
+            <div class="hp-strip" id="enemy-hp-strip">
+              <div class="hp-bar-outer" id="enemy-hp-bar-shell" aria-hidden="true">
+                <div class="hp-bar-inner hp-bar-inner--enemy" id="enemy-hp-bar"></div>
+              </div>
+              <div class="hp-numbers hp-numbers--tight">
+                <span id="enemy-hp">60</span>/<span id="enemy-max-hp">60</span><span class="hp-block-suffix" id="enemy-block-suffix" hidden></span>
+              </div>
+            </div>
+            <div class="enemy-hit-wrap" id="enemy-hit-wrap">
+              <div class="enemy-shard-host" id="enemy-shard-host" aria-hidden="true"></div>
+              <div class="cube cube--enemy" id="enemy-cube"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="selection-frame" id="selection-frame" hidden aria-label="阶段选择界面">
+        <div class="selection-frame-panel">
+          <h3 class="collection-overlay-title" id="selection-frame-title">选择</h3>
+          <p class="collection-hint" id="selection-frame-hint"></p>
+          <div class="camp-actions" id="selection-frame-actions"></div>
+          <div class="camp-picker" id="selection-frame-picker" hidden>
+            <h4 class="camp-picker-title" id="selection-frame-picker-title">选择卡牌</h4>
+            <div class="collection-grid" id="selection-frame-picker-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        class="pile-overlay"
+        id="pile-overlay"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pile-overlay-title"
+      >
+        <button type="button" class="pile-overlay-backdrop" id="pile-overlay-backdrop" aria-label="关闭"></button>
+        <div class="pile-overlay-panel">
+          <h3 class="pile-overlay-title" id="pile-overlay-title">抽牌堆</h3>
+          <ul class="pile-overlay-list" id="pile-overlay-list"></ul>
+          <button type="button" class="btn pile-overlay-close" id="pile-overlay-close">关闭</button>
+        </div>
+      </div>
+
+      <section class="hand-section" id="hand-section">
+        <h2 class="hand-head">
+          <span>手牌 <span class="hint">点击打出（消耗能量）；费用不足无法打出</span></span>
+          <span class="hand-energy" id="energy-orbs" aria-label="能量"></span>
+        </h2>
+        <div class="hand" id="hand"></div>
+      </section>
+
+      <section class="log-section">
+        <h2>日志</h2>
+        <div class="log" id="log"></div>
+      </section>
+
+      <div class="end-turn-wrap">
+        <button type="button" id="btn-end-turn" class="btn end-turn">结束回合</button>
+      </div>
+
+      <div class="collection-stack">
+        <button type="button" class="btn debug-fab" id="btn-debug-toggle" title="开发调试用：无限能量与路线跳转" aria-pressed="false">
+          DEBUG
+        </button>
+        <button
+          type="button"
+          class="btn debug-fab"
+          id="btn-debug-reward-pool"
+          title="DEBUG：浏览奖励池并点击加入牌组"
+          disabled
+        >
+          奖励池
+        </button>
+        <button type="button" class="btn collection-fab" id="btn-view-collection" title="检视当前拥有的全部卡牌">
+          牌库
+        </button>
+      </div>
+        </div>
+
+        <aside class="map-rail" id="map-rail" aria-label="路线地图">
+          <div class="map-rail-title">路线</div>
+          <div class="map-nodes" id="map-nodes"></div>
+        </aside>
+      </div>
+
+      <div
+        class="collection-overlay"
+        id="collection-overlay"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="collection-overlay-title"
+      >
+        <button type="button" class="collection-overlay-backdrop" id="collection-overlay-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="collection-overlay-title">我的牌组</h3>
+          <p class="collection-hint">仅检视牌面，无法打出或操作</p>
+          <div class="collection-grid" id="collection-grid"></div>
+          <button type="button" class="btn collection-overlay-close" id="collection-overlay-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="result-overlay result-overlay--defeat" id="defeat-overlay" hidden>
+        <div class="result-overlay-inner">
+          <p class="result-title result-title--defeat">游戏失败</p>
+          <p class="result-sub">生命归零</p>
+          <button type="button" class="btn primary result-next" id="btn-defeat-restart">开始新游戏</button>
+        </div>
+      </div>
+
+      <div class="result-overlay result-overlay--victory" id="victory-overlay" hidden>
+        <div class="result-overlay-inner">
+          <p class="result-title result-title--victory">战斗胜利</p>
+          <p class="result-sub" id="victory-sub">敌人已溃散</p>
+          <button type="button" class="btn primary result-next" id="btn-next-battle">下一场战斗</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="camp-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="camp-title">
+        <button type="button" class="collection-overlay-backdrop" id="camp-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="camp-title">篝火休息区 🔥</h3>
+          <p class="collection-hint">选择一个选项后将前往下一节点。</p>
+          <div class="camp-actions">
+            <button type="button" class="btn primary" id="camp-rest">休息（回复 25% 最大生命）</button>
+            <button type="button" class="btn" id="camp-upgrade">升级（选择一张牌升级）</button>
+            <button type="button" class="btn" id="camp-purge">清理（移除一张牌）</button>
+          </div>
+          <div class="camp-picker" id="camp-picker" hidden>
+            <h4 class="camp-picker-title" id="camp-picker-title">选择卡牌</h4>
+            <div class="collection-grid" id="camp-picker-grid"></div>
+          </div>
+          <div class="camp-upgrade-preview" id="camp-upgrade-preview" hidden>
+            <div class="camp-upgrade-preview-col">
+              <div class="camp-upgrade-preview-label">升级前</div>
+              <div class="camp-upgrade-preview-card" id="camp-preview-before"></div>
+            </div>
+            <div class="camp-upgrade-preview-arrow">→</div>
+            <div class="camp-upgrade-preview-col">
+              <div class="camp-upgrade-preview-label">升级后</div>
+              <div class="camp-upgrade-preview-card" id="camp-preview-after"></div>
+            </div>
+          </div>
+          <button type="button" class="btn collection-overlay-close" id="camp-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="blessing-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="blessing-title">
+        <button type="button" class="collection-overlay-backdrop" id="blessing-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="blessing-title">开局祝福 ✨</h3>
+          <p class="collection-hint">从随机祝福池中选择一个强化，随后开始你的旅程。</p>
+          <div class="camp-actions" id="blessing-options"></div>
+          <div class="camp-picker" id="blessing-picker" hidden>
+            <h4 class="camp-picker-title" id="blessing-picker-title">选择卡牌</h4>
+            <div class="collection-grid" id="blessing-picker-grid"></div>
+          </div>
+          <button type="button" class="btn collection-overlay-close" id="blessing-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="discard-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="discard-title">
+        <button type="button" class="collection-overlay-backdrop" id="discard-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="discard-title">选择弃牌</h3>
+          <p class="collection-hint" id="discard-hint">请选择 1 张手牌弃置。</p>
+          <div class="collection-grid" id="discard-grid"></div>
+          <button type="button" class="btn collection-overlay-close" id="discard-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="event-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="event-title">
+        <button type="button" class="collection-overlay-backdrop" id="event-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="event-title">事件</h3>
+          <p class="collection-hint" id="event-description"></p>
+          <div class="camp-actions" id="event-choices"></div>
+          <button type="button" class="btn collection-overlay-close" id="event-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="character-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="character-title">
+        <button type="button" class="collection-overlay-backdrop" id="character-backdrop" aria-label="关闭"></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="character-title">选择角色</h3>
+          <p class="collection-hint">在进入第一间祝福前，先选择本局角色。</p>
+          <div class="character-choices">
+            <button type="button" class="character-choice character-choice--warrior" id="btn-pick-warrior">
+              <span class="character-cube character-cube--warrior" aria-hidden="true"></span>
+              <span class="character-name">战士</span>
+            </button>
+            <button type="button" class="character-choice character-choice--mage" id="btn-pick-nature-mage">
+              <span class="character-cube character-cube--mage" aria-hidden="true"></span>
+              <span class="character-name">自然法师（开发中）</span>
+            </button>
+          </div>
+          <button type="button" class="btn collection-overlay-close" id="character-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="collection-overlay" id="reward-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="reward-title">
+        <button type="button" class="collection-overlay-backdrop" aria-label="关闭" disabled></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="reward-title">战斗奖励：三选一</h3>
+          <p class="collection-hint" id="reward-hint">选择一张加入本局牌库。</p>
+          <div class="collection-grid" id="reward-choices"></div>
+          <button type="button" class="btn collection-overlay-close" id="reward-skip">跳过</button>
+        </div>
+      </div>
+
+      <div
+        class="collection-overlay"
+        id="debug-reward-pool-overlay"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="debug-reward-pool-title"
+      >
+        <button
+          type="button"
+          class="collection-overlay-backdrop"
+          id="debug-reward-pool-backdrop"
+          aria-label="关闭"
+        ></button>
+        <div class="collection-overlay-panel">
+          <h3 class="collection-overlay-title" id="debug-reward-pool-title">DEBUG：奖励池浏览</h3>
+          <p class="collection-hint" id="debug-reward-pool-hint">点击任意卡牌可直接加入本局牌组。</p>
+          <div class="collection-grid" id="debug-reward-pool-grid"></div>
+          <button type="button" class="btn collection-overlay-close" id="debug-reward-pool-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="upgrade-preview-float" id="upgrade-preview-float" hidden>
+        <div class="upgrade-preview-float-head" id="upgrade-preview-head">升级预览（可拖动）</div>
+        <div class="camp-upgrade-preview-col">
+          <div class="camp-upgrade-preview-label">升级前</div>
+          <div class="camp-upgrade-preview-card" id="upgrade-preview-before"></div>
+        </div>
+        <div class="camp-upgrade-preview-arrow">→</div>
+        <div class="camp-upgrade-preview-col">
+          <div class="camp-upgrade-preview-label">升级后</div>
+          <div class="camp-upgrade-preview-card" id="upgrade-preview-after"></div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="site-watermark"
+      href="https://github.com/hentrain233/slaythespire_cursorTest"
+      title="https://github.com/hentrain233/slaythespire_cursorTest"
+    >WennanZhang</a>
+    <script src="data/card-config.js"></script>
+    <script src="data/blessing-config.js"></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

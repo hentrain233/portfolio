@@ -1,0 +1,15 @@
+本地打开作品集
+=============
+
+1. 在终端进入目录：
+   d:\UI素材\portfolio\website
+
+2. 启动静态服务（内嵌游戏使用 ES 模块，建议用 HTTP 访问）：
+   python -m http.server 8080
+
+3. 浏览器访问：
+   http://127.0.0.1:8080/
+
+若直接双击 index.html（file://），页面可浏览，但内嵌游戏可能被浏览器限制；请优先使用上述方式，或点击页内「GitHub Pages」加载在线版本。
+
+文案与结构可在 index.html 中修改；content.json 为便于同步维护的副本。

@@ -1,0 +1,9 @@
+templateId,name,kind,cost_base,cost_upgraded,damage_base,damage_upgraded,multiHitCount_base,multiHitCount_upgraded,multiHitPerHit_base,multiHitPerHit_upgraded,block_base,block_upgraded,draw_base,draw_upgraded,strengthGain_base,strengthGain_upgraded,fortitudeGain_base,fortitudeGain_upgraded,vulnerable_base,vulnerable_upgraded,gainEnergy_base,gainEnergy_upgraded,exhaust,ignoreTargetVulnerable,lockBlockGainThisTurn,desc_base,desc_upgraded
+strike,打击,attack,1,1,6,9,,,,,,,,,,,,,,,,,,造成 6 点基础伤害（受力量加成；决战发动后打击部分翻倍）。,造成 9 点基础伤害（受力量加成；决战发动后打击部分翻倍）。,,
+defend,防御,defend,1,1,,,,,,,5,7,,,,,,,,,,,,,获得 5 点基础格挡（受坚固加成）。,获得 8 点基础格挡（受坚固加成）。,
+insight,洞察,skill,1,0,,,,,,,,,3,3,,,,,,,,,,,抽 3 张牌。,抽 4 张牌。,
+comboSlash,连斩,attack,1,1,,,,3,3,2,3,,,,,,,,,,,,,对敌方单体造成 3 次 2 点伤害（每次独立受力量加成）。,对敌方单体造成 3 次 3 点伤害（每次独立受力量加成）。,,
+armorBreak,破甲,attack,2,2,8,11,,,,,,,,,,,,,2,3,,,true,true,,【消耗】造成 8 点伤害并施加 2 层易伤（此次伤害不受易伤加成）。,【消耗】造成 11 点伤害并施加 3 层易伤（此次伤害不受易伤加成）。
+adrenalineLock,透支,skill,0,0,,,,,,,,,,,,,,,,2,3,true,,true,【消耗】获得 2 点能量，本回合不能再获得格挡。,【消耗】获得 3 点能量，本回合不能再获得格挡。,
+decisiveBattle,决战,power,1,1,,,,,,,,,,,,,,,,,,,,,本场战斗：打击双倍伤害；之后只能打出攻击牌。,本场战斗：打击双倍伤害；之后只能打出攻击牌。,
+crescendo,渐强,power,1,1,,,,,,,,,,,,1,2,1,2,,,,,,本场战斗获得 1 点力量与 1 点坚固。,本场战斗获得 2 点力量与 2 点坚固。,

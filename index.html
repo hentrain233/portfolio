@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="张文楠 Wennan Zhang — 个人网站 · 游戏界面、动效与独立游戏开发。" />
+    <meta name="theme-color" content="#0a0e18" />
+    <title>张文楠 Wennan Zhang — 个人网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Instrument+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#page-viewport" data-i18n="skip">跳到主要内容</a>
+
+    <header class="site-header" role="banner">
+      <div class="wrap site-header__inner">
+        <a class="logo" href="#intro" data-page="0" title="张文楠 Wennan Zhang">张文楠 <span class="logo-en">Wennan Zhang</span></a>
+        <nav class="nav nav--pages" aria-label="主导航" data-i18n-aria="nav.aria">
+          <a href="#intro" data-page="0" data-i18n="nav.intro">介绍</a>
+          <a href="#work-roguelike" data-page="1" data-i18n="nav.cards">卡牌</a>
+          <a href="#work-beneath" data-page="2" data-i18n="nav.beneath">Beneath</a>
+          <a href="#work-blender" data-page="3" data-i18n="nav.blender">Blender</a>
+          <a href="#work-rhino" data-page="4" data-i18n="nav.rhino">Rhino</a>
+          <a href="#work-adobe" data-page="5" data-i18n="nav.ai">AI 设计</a>
+          <a href="#work-ae" data-page="6" data-i18n="nav.ae">AE</a>
+          <a href="#work-ui-component" data-page="7" data-i18n="nav.ui">UI</a>
+          <a href="#work-texturewriter" data-page="8" data-i18n="nav.story">叙事</a>
+          <a href="#work-farm-life" data-page="9" data-i18n="nav.farm">种田</a>
+        </nav>
+        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-toggle__icon" aria-hidden="true">🌏</span>
+          <span class="lang-toggle__text" data-i18n="lang.toggle">EN</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-dots" aria-hidden="true"></div>
+
+    <div id="page-viewport" class="page-viewport">
+      <div class="global-atmosphere" aria-hidden="true">
+        <div class="global-bg-base"></div>
+        <div class="global-smoke-back"></div>
+        <div class="global-smoke-mid"></div>
+        <div class="global-neon-slot" aria-hidden="true">
+          <div class="global-neon-rotate"></div>
+        </div>
+        <div class="global-cyber-grid"></div>
+        <div class="global-fog-drift"></div>
+        <div class="global-rain"></div>
+        <div class="global-glass-veil"></div>
+        <div class="global-scanlines"></div>
+        <div class="global-edge-glow"></div>
+      </div>
+      <div id="page-track" class="page-track">
+        <section class="page page--hero" id="intro" aria-labelledby="hero-title">
+          <div class="hero-stage">
+            <div class="wrap hero-wrap">
+              <div class="hero-layout">
+                <div class="hero-panel">
+                  <p class="hero-label" data-i18n="hero.label">个人网站</p>
+                  <h1 id="hero-title">张文楠</h1>
+                  <p class="hero-name-en" lang="en">Wennan Zhang</p>
+                  <p class="hero-role" data-i18n="hero.role">游戏 UI / 界面动效 · 数字媒体</p>
+                  <p class="hero-edu" data-i18n="hero.edu">约克大学（多伦多）数字媒体专业 · 2021 — 2026</p>
+                  <p class="hero-lead" data-i18n="hero.lead">
+                    广东深圳出生的胖小伙，有 9 年加拿大留学经历，对独立游戏制作与 UI/UX、动效与 vibecoding 充满兴趣。目前正在开发类《杀戮尖塔》的卡牌肉鸽网页游戏，并在
+                    Unity 上开发 PC 端、类《星露谷》的独立游戏。在不断探索中自我迭代成长。
+                  </p>
+                  <p class="hero-body" data-i18n="hero.body">
+                    熟悉 Figma、Illustrator、After Effects 等流程，具备 Unity UI 与虚幻引擎基础；善用 AIGC 与绘图工具辅助资产与界面迭代。英语可作为工作语言。以下为项目节选。
+                  </p>
+                  <div class="hero-cta">
+                    <button type="button" class="btn btn-primary" data-page="1" data-i18n="hero.cta">进入作品</button>
+                  </div>
+                  <div class="hero-line" aria-hidden="true"></div>
+                </div>
+                <aside class="hero-photo-rail" data-i18n-aria="hero.photos.aria">
+                  <div class="hero-photo-rail__scroll">
+                    <figure class="hero-photo-rail__fig">
+                      <img
+                        src="assets/photos/portrait-lake.png"
+                        alt=""
+                        data-i18n-alt="hero.photo1.alt"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                    <figure class="hero-photo-rail__fig">
+                      <img
+                        src="assets/photos/portrait-rooftop.png"
+                        alt=""
+                        data-i18n-alt="hero.photo2.alt"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 第 1 页：卡牌 -->
+        <section class="page page--content" id="work-roguelike" aria-labelledby="title-roguelike">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--page">
+              <h3 id="title-roguelike" data-i18n="workRoguelike.title">类《杀戮尖塔》网页卡牌 Roguelike</h3>
+              <p class="project-sub" data-i18n="workRoguelike.sub">基于 Cursor 的 vibe coding · 前端可运行原型</p>
+              <p class="project-copy" data-i18n="workRoguelike.copy" data-i18n-html>
+                浏览器端卡牌 Roguelike：战斗、路线、事件、商店、遗物、增益与诅咒等系统，内容以 <code>data/</code> 为主的数据驱动结构，便于快速迭代与调参。
+              </p>
+              <ul class="project-list">
+                <li data-i18n="workRoguelike.li1">回合制战斗：能量、抽弃牌、关键词与状态效果</li>
+                <li data-i18n="workRoguelike.li2">单局流程：路线节点、事件、商店、篝火、精英与首领</li>
+                <li data-i18n="workRoguelike.li3">调试与数值入口，便于平衡性迭代</li>
+              </ul>
+
+              <div class="play-toolbar">
+                <button type="button" class="btn btn-primary" id="btn-load-local" data-i18n="workRoguelike.btnLocal">嵌入本地版本</button>
+                <button type="button" class="btn btn-ghost" id="btn-load-remote" data-i18n="workRoguelike.btnRemote">加载 GitHub Pages</button>
+                <span class="note" data-i18n="workRoguelike.note">若内嵌区域无法显示，请使用「在线试玩」或「GitHub Pages」在新窗口打开。</span>
+              </div>
+
+              <div class="play-frame-wrap">
+                <iframe
+                  id="game-frame"
+                  title="卡牌 Roguelike 游戏"
+                  loading="lazy"
+                  data-local="play/index.html"
+                  data-remote="https://hentrain233.github.io/slaythespire_cursorTest/"
+                  src="play/index.html"
+                ></iframe>
+              </div>
+
+              <div class="links-row">
+                <a href="https://github.com/hentrain233/slaythespire_cursorTest" target="_blank" rel="noopener noreferrer" data-i18n="workRoguelike.linkGh">GitHub 仓库</a>
+                <a href="https://hentrain233.github.io/slaythespire_cursorTest/" target="_blank" rel="noopener noreferrer" data-i18n="workRoguelike.linkPlay">在线试玩（新标签页）</a>
+                <a href="play/index.html" target="_blank" rel="noopener noreferrer" data-i18n="workRoguelike.linkLocal">本地构建（新标签页）</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 2 页：Beneath -->
+        <section class="page page--content" id="work-beneath" aria-labelledby="title-beneath">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--rich project-card--page">
+              <div class="project-card-head">
+                <h3 id="title-beneath" data-i18n="workBeneath.title">《Beneath the Skin》团队游戏 · 美术与叙事支持</h3>
+                <p class="project-sub" data-i18n="workBeneath.sub">角色头像 · 行走动画 · UI · 音效 · 叙事与界面</p>
+              </div>
+              <p class="project-copy" data-i18n="workBeneath.copy">
+                在多次 Playtest 周期中负责对话头像与像素资源（Adobe Illustrator / Piskel）、Audacity
+                录制与混音、剧情与风味文本，以及安保与科学家等角色的行走 / 变形精灵动画；为《Beneath the
+                Skin》制作循环 BGM，并推进对话框 UI、化学试管场景与怀疑值条等界面。
+              </p>
+              <div class="audio-inline audio-inline--beneath-bgm">
+                <p class="audio-inline__label" data-i18n="workBeneath.audioLabel">BGM · TFL-BUDDY（全站背景音乐，可暂停、拖动进度）</p>
+                <audio id="site-bgm" controls preload="auto" playsinline loop>
+                  <source src="assets/projects/beneath-the-skin/audio/TFL_BUDDY.wav" type="audio/wav" />
+                </audio>
+              </div>
+              <div class="links-row">
+                <a href="https://kobeleung.itch.io/beneath-the-skin" target="_blank" rel="noopener noreferrer" data-i18n="workBeneath.linkItch"
+                  >itch.io 下载与介绍（Beneath the Skin）↗</a>
+              </div>
+              <div class="gallery gallery--beneath">
+                <div class="gallery-mosaic">
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/Security.png" alt="安保角色像素立绘" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/Scientist.png" alt="科学家角色像素立绘" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/Scientist2_Default.png" alt="科学家角色状态：默认" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/Scientist2_Sus.png" alt="科学家角色状态：可疑" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/UI_dialogebox.png" alt="对话框 UI 设计" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell">
+                    <img src="assets/projects/beneath-the-skin/avatar/Tube_Pixel.png" alt="化学试管场景像素图" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell gallery-cell--gif">
+                    <img src="assets/projects/beneath-the-skin/docx-media/image3.gif" alt="角色行走动画演示" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-cell gallery-cell--gif">
+                    <img src="assets/projects/beneath-the-skin/docx-media/image4.gif" alt="角色行走动画演示" loading="lazy" />
+                  </figure>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 3 页：Blender -->
+        <section class="page page--content" id="work-blender" aria-labelledby="title-blender">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--rich project-card--page">
+              <div class="project-card-head">
+                <h3 id="title-blender" data-i18n="workBlender.title">Blender 数码拼贴 · 赛博改造人（课程项目）</h3>
+                <p class="project-sub" data-i18n="workBlender.sub">FA/VISA 3033 · Digital MeshUp · York University（含课程文档导出渲染图）</p>
+              </div>
+              <p class="project-copy" data-i18n="workBlender.copy">
+                以《赛博朋克 2077》气质为参考，将下载的人体与机械零件进行布尔切割、雕刻与 Lattice / Mirror
+                修饰，使义体与躯干衔接更自然；为缺失材质的模型补金属材质，并拆分重组机械尾、勋章贴片等部件，最终完成灯光与渲染合成。
+              </p>
+
+              <div class="gallery gallery--blender">
+                <figure class="gallery-hero gallery-hero--tall">
+                  <img
+                    src="assets/projects/blender/docx-media/image15.png"
+                    alt="Blender 最终渲染合成主视图"
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="gallery-strip">
+                  <figure><img src="assets/projects/blender/docx-media/image1.png" alt="参考与灵感拼贴" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image2.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image3.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image4.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image5.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image6.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image7.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image8.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image9.jpeg" alt="材质与布光测试" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image10.png" alt="渲染阶段" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image11.png" alt="渲染阶段" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image12.png" alt="渲染阶段" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image13.png" alt="渲染阶段" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image14.png" alt="渲染合成" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/blender/docx-media/image16.png" alt="最终合成变体" loading="lazy" /></figure>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 4 页：Rhino 打字机 -->
+        <section class="page page--content" id="work-rhino" aria-labelledby="title-rhino">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--rich project-card--page">
+              <h3 id="title-rhino" data-i18n="workRhino.title">Rhino · 机械打字机三维建模</h3>
+              <p class="project-sub" data-i18n="workRhino.sub">FA/VISA 3033 · 3D 制造方向 · 课程终期项目</p>
+              <p class="project-copy" data-i18n="workRhino.copy">
+                以收藏机械打字机为灵感，参考 Underwood 等经典机型，在 Rhino 中从零件到外壳逐件建模再拼装，注重参考线与圆角曲线的连续性；在解决 FilletEdge
+                导致的边缘错位与开放壳体问题时，通过 ExtractSrf、重建边缘与闭合曲面完成实体。
+              </p>
+              <div class="gallery gallery--rhino">
+                <div class="gallery-duo">
+                  <figure class="gallery-hero">
+                    <img src="assets/projects/rhino-typewriter/render-a.png" alt="打字机三维渲染 A" loading="lazy" />
+                  </figure>
+                  <figure class="gallery-hero">
+                    <img src="assets/projects/rhino-typewriter/render-b.png" alt="打字机三维渲染 B" loading="lazy" />
+                  </figure>
+                </div>
+                <div class="gallery-strip">
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image1.png" alt="灵感与调研" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image2.jpeg" alt="设计过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image3.jpeg" alt="设计过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image4.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image5.png" alt="建模过程" loading="lazy" /></figure>
+                  <figure><img src="assets/projects/rhino-typewriter/docx-media/image6.png" alt="建模过程" loading="lazy" /></figure>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 5 页：Adobe Illustrator（Large2 / S 源文件为主） -->
+        <section class="page page--content" id="work-adobe" aria-labelledby="title-adobe">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--page project-card--adobe">
+              <h3 id="title-adobe" data-i18n="workAdobe.title">Adobe Illustrator · 矢量主稿</h3>
+              <p class="project-sub" data-i18n="workAdobe.sub">Large2 · S · 界面与组件编排</p>
+              <p class="project-copy" data-i18n="workAdobe.copy">
+                以 Illustrator 完成主视觉与组件编排：对齐网格、层级与描边系统。
+              </p>
+              <figure class="adobe-hero-glass">
+                <div class="adobe-hero-glass__pane">
+                  <img
+                    src="assets/projects/adobe-ai/Large2.png"
+                    alt="Illustrator 主稿 Large2：界面与组件编排"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption class="adobe-hero-glass__cap" data-i18n="workAdobe.figcap">Large2 · 主视觉预览</figcaption>
+              </figure>
+              <p class="adobe-source-line">
+                <a
+                  class="adobe-source-link"
+                  href="assets/projects/adobe-ai/Large2.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="workAdobe.source"
+                  >Illustrator 源文件</a>
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 7 页：AE -->
+        <section class="page page--content" id="work-ae" aria-labelledby="title-ae">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--page">
+              <h3 id="title-ae" data-i18n="workAe.title">After Effects · 基础动效</h3>
+              <p class="project-sub" data-i18n="workAe.sub">课程习作 · 影像与节奏</p>
+              <p class="project-copy" data-i18n="workAe.copy">
+                After Effects 基础动画练习：图层、关键帧与时间轴节奏控制，输出为视频片段。
+              </p>
+              <div class="video-frame">
+                <video controls playsinline preload="metadata">
+                  <source src="assets/projects/ae-basic/WennanZhang_A2.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 8 页：UI 组件（施工中） -->
+        <section class="page page--content" id="work-ui-component" aria-labelledby="title-ui">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--rich project-card--page">
+              <div class="project-card-head">
+                <h3 id="title-ui" data-i18n="workUi.title">游戏 UI 组件与界面编排</h3>
+                <p class="project-sub">
+                  <span class="wip-badge" data-i18n="badge.wip" data-i18n-title="badge.wip.title" title="素材整理中">施工中</span>
+                  <span data-i18n="workUi.sub">休闲向界面组件、关卡条与道具格等（完整素材尚未搬运至本站）</span>
+                </p>
+              </div>
+              <p class="project-copy" data-i18n="workUi.copy">
+                该版块用于集中展示界面组件与视觉稿预览；目前仍在整理与迁移，后续会补充更多切片与交互说明。
+              </p>
+              <div class="links-row links-row--stack">
+                <a
+                  href="https://portfolio.ca/wennanzhang"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="workUi.linkMore"
+                  >更多作品 · portfolio.ca/wennanzhang ↗</a>
+                <span class="link-hint" role="note" data-i18n="workUi.hint">外站访问可能需 VPN，视网络环境而定。</span>
+              </div>
+              <div class="gallery gallery--ui-component">
+                <figure class="gallery-hero">
+                  <img
+                    src="assets/projects/ui-component/concept.png"
+                    alt="界面概念氛围图：悬浮面板与星标主视觉"
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="gallery-hero gallery-hero--ui-sheet">
+                  <img
+                    src="assets/projects/ui-component/components-grid.png"
+                    alt="休闲向游戏 UI 组件：关卡条、目标窗、道具与按钮等"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 9 页：TextureWriter -->
+        <section class="page page--content" id="work-texturewriter" aria-labelledby="title-tw">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--page">
+              <h3 id="title-tw" data-i18n="workTw.title">互动叙事 · TextureWriter</h3>
+              <p class="project-sub" data-i18n="workTw.sub">课程作业 · 分支剧情与互动阅读</p>
+              <p class="project-copy" data-i18n="workTw.copy">
+                使用 TextureWriter 搭建的互动叙事，支持多分支阅读体验，在浏览器中完成分支剧情与互动阅读。
+              </p>
+              <figure class="project-novel-shot">
+                <img
+                  src="assets/projects/texturewriter/novel-screen.png"
+                  alt=""
+                  width="1024"
+                  height="798"
+                  data-i18n-alt="workTw.illustration.alt"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="links-row">
+                <a href="https://texturewriter.com/play/hentrain/l4d2/info" target="_blank" rel="noopener noreferrer" data-i18n="workTw.link">在 TextureWriter 打开 ↗</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 第 10 页：类《星露谷》Unity 项目（占位，站末） -->
+        <section class="page page--content page--last" id="work-farm-life" aria-labelledby="title-farm">
+          <div class="page-inner wrap">
+            <article class="project-card project-card--page">
+              <h3 id="title-farm" data-i18n="workFarm.title">类《星露谷》PC 独立游戏 · Unity</h3>
+              <p class="project-sub">
+                <span class="wip-badge" data-i18n="badge.placeholder" data-i18n-title="badge.placeholder.title" title="开发中">占位</span>
+                <span data-i18n="workFarm.sub">种田与生活模拟向 · 素材与试玩尚未接入本站</span>
+              </p>
+              <p class="project-copy" data-i18n="workFarm.copy">
+                Unity 开发的 PC 端项目，目标为轻松的农场经营与日常循环玩法。当前仍在制作与打磨阶段，后续会在此补充截图、视频或可玩构建链接。
+              </p>
+              <div class="game-placeholder" data-i18n-aria="workFarm.placeholder.aria" aria-label="游戏预览占位">
+                <div class="game-placeholder__inner">
+                  <p class="game-placeholder__kicker">Unity · Windows PC</p>
+                  <p class="game-placeholder__title">Farm / Life Sim</p>
+                  <p class="game-placeholder__hint" data-i18n="workFarm.ph.hint">预览区域 · 敬请期待</p>
+                </div>
+              </div>
+            </article>
+
+            <footer class="site-footer site-footer--inpage" role="contentinfo">
+              <p data-i18n-footer></p>
+            </footer>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="i18n.js" defer></script>
+    <script src="site.js" defer></script>
+  </body>
+</html>

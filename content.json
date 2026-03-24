@@ -1,0 +1,19 @@
+{
+  "siteTitle": "张文楠 Wennan Zhang — 个人网站",
+  "intro": {
+    "nameZh": "张文楠",
+    "nameEn": "Wennan Zhang",
+    "role": "游戏开发 · 界面与交互"
+  },
+  "worksOrder": [
+    "roguelike",
+    "beneath-the-skin",
+    "blender",
+    "rhino-typewriter",
+    "adobe-ai",
+    "ae-basic",
+    "ui-component",
+    "texturewriter",
+    "farm-life-sim"
+  ]
+}
